@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Socio;
 use App\Models\Pelicula;
 use App\Models\Alquiler;
@@ -28,7 +29,7 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
-     /**Funcion de la clase Dashboard, retorna vista del dashboard.index.php */
+    /**Funcion de la clase Dashboard, retorna vista del dashboard.index.php */
     public function dashboard()
     {
         $c_peliculas = Pelicula::all()->count();
@@ -38,30 +39,59 @@ class HomeController extends Controller
         $c_formatos = Formato::all()->count();
 
         //GRAFICA AREA DE X:DIRECCION - Y:CANT SOCIOS
-        $cLatacunga = Socio::where('soc_direccion','Latacunga')->count();
-        $cQuito = Socio::where('soc_direccion','Quito')->count();
-        $cAmbato = Socio::where('soc_direccion','Ambato')->count();
-        $cQuevedo = Socio::where('soc_direccion','Quevedo')->count();
-        $cSalcedo = Socio::where('soc_direccion','Salcedo')->count();
+        $cLatacunga = Socio::where('soc_direccion', 'Latacunga')->count();
+        $cQuito = Socio::where('soc_direccion', 'Quito')->count();
+        $cAmbato = Socio::where('soc_direccion', 'Ambato')->count();
+        $cQuevedo = Socio::where('soc_direccion', 'Quevedo')->count();
+        $cSalcedo = Socio::where('soc_direccion', 'Salcedo')->count();
 
         //GRAFICA DONUT
 
-        
 
+        return view(
+            'admin.dashboard',
+            [
+                'c_peliculas' => $c_peliculas,
+                'c_alquilers' => $c_alquilers,
+                'c_socios' => $c_socios,
+                'c_generos' => $c_generos,
+                'c_formatos' => $c_formatos,
+                'cLatacunga' => $cLatacunga,
+                'cQuito' => $cQuito,
+                'cAmbato' => $cAmbato,
+                'cQuevedo' => $cQuevedo,
+                'cSalcedo' => $cSalcedo
+            ]
+        );
+    }
 
+    public function reporte1()
+    {
+        $peliculas = Pelicula::all();
+        return view('admin.reporte1',compact('peliculas'));
+    }
 
+    public function reporte2()
+    {
+        $socios = Socio::all();
+        return view('admin.reporte2',compact('socios'));
+    }
 
-        return view('admin.dashboard',
-                    ['c_peliculas'=> $c_peliculas,
-                     'c_alquilers'=> $c_alquilers,
-                     'c_socios'=> $c_socios,
-                     'c_generos'=> $c_generos,
-                     'c_formatos'=> $c_formatos,
-                     'cLatacunga'=> $cLatacunga,
-                     'cQuito'=> $cQuito,
-                     'cAmbato'=> $cAmbato,
-                     'cQuevedo'=> $cQuevedo,
-                     'cSalcedo'=> $cSalcedo]);
-        
+    public function reporte3()
+    {
+        $alquilers = Alquiler::all();
+        return view('admin.reporte3',compact('alquilers'));
+    }
+
+    public function reporte4()
+    {
+        $peliculas = Pelicula::all();
+        return view('admin.reporte4',compact('peliculas'));
+    }
+
+    public function reporte5()
+    {
+        $alquilers = Alquiler::all();
+        return view('admin.reporte5',compact('alquilers'));
     }
 }

@@ -14,8 +14,8 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
-    'title_prefix' => 'Peliculas |',
+    'title' => '',
+    'title_prefix' => 'Peliculas ',
     'title_postfix' => '',
 
     /*
@@ -85,7 +85,7 @@ return [
 
     'layout_topnav' => null,
     'layout_boxed' => null,
-    'layout_fixed_sidebar' => null,
+    'layout_fixed_sidebar' => TRUE,
     'layout_fixed_navbar' => TRUE,
     'layout_fixed_footer' => null,
     'layout_dark_mode' => null,
@@ -122,12 +122,12 @@ return [
     */
 
     'classes_body' => '',
-    'classes_brand' => 'bg-purple',
+    'classes_brand' => 'bg-light',
     'classes_brand_text' => '',
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-info elevation-4',
+    'classes_sidebar' => 'sidebar-light-info elevation-4',
     'classes_sidebar_nav' => '',
     'classes_topnav' => 'navbar-white navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
@@ -229,7 +229,7 @@ return [
         [
             'type'         => 'navbar-search',
             'text'         => 'Buscar',
-            'topnav_right' => true,
+            'topnav_right' => false,
         ],
         [
             'type'         => 'fullscreen-widget',
@@ -263,62 +263,62 @@ return [
         [
             'text' => ' Administración',
             'icon' => 'fas fa-user-shield',
-            'icon_color' => 'white',
+            'icon_color' => 'dark',
             'submenu' => [
                 [
                     'text' => 'Socio',
                     'url'  => 'socio',
                     'icon' => 'fas fa-address-card',
-                    'icon_color' => 'white',
+                    'icon_color' => 'dark',
                 ],
         
                 [
                     'text' => 'Género',
                     'url'  => 'genero',
                     'icon' => 'fas fa-theater-masks',
-                    'icon_color' => 'white',
+                    'icon_color' => 'dark',
                 ],
         
                 [
                     'text' => 'Formato',
                     'url'  => 'formato',
                     'icon' => 'fas fa-file-video',
-                    'icon_color' => 'white',
+                    'icon_color' => 'dark',
                 ],
         
                 [
                     'text' => 'Director',
                     'url'  => 'director',
                     'icon' => 'fas fa-bullhorn',
-                    'icon_color' => 'white',
+                    'icon_color' => 'dark',
                 ],
         
                 [
                     'text' => 'Sexo',
                     'url'  => 'sexo',
                     'icon' => 'fas fa-mars',
-                    'icon_color' => 'white',
+                    'icon_color' => 'dark',
                 ],
                 ['header' => '------------------------------------------------'],
                 [
                     'text' => 'Pelicula',
                     'url'  => 'pelicula',
                     'icon' => 'fas fa-film',
-                    'icon_color' => 'white',
+                    'icon_color' => 'dark',
                 ],
                 ['header' => '------------------------------------------------'],
                 [
                     'text' => 'Alquiler',
                     'url'  => 'alquiler',
                     'icon' => 'fas fa-tags',
-                    'icon_color' => 'white',
+                    'icon_color' => 'dark',
                 ],
         
                 [
                     'text' => 'Actor pelicula',
                     'url'  => 'actor_pelicula',
                     'icon' => 'fas fa-user-alt',
-                    'icon_color' => 'white',
+                    'icon_color' => 'dark',
                 ]
             ]
         ],
@@ -326,31 +326,31 @@ return [
         [
             'text' => 'Reportes',
             'icon' => 'fas fa-columns',
-            'icon_color' => 'white',
+            'icon_color' => 'dark',
             'submenu' => [
                 [
                     'text' => 'Reporte 1',
-                    'url'  => 'tablecosto',
+                    'url'  => 'reporte1',
                     'icon' => 'fas fa-edit',
                 ],
                 [
                     'text' => 'Reporte 2',
-                    'url'  => '#',
+                    'url'  => 'reporte2',
                     'icon' => 'fas fa-edit',
                 ],
                 [
                     'text' => 'Reporte 3',
-                    'url'  => '#',
+                    'url'  => 'reporte3',
                     'icon' => 'fas fa-edit',
                 ],
                 [
                     'text' => 'Reporte 4',
-                    'url'  => '#',
+                    'url'  => 'reporte4',
                     'icon' => 'fas fa-edit',
                 ],
                 [
                     'text' => 'Reporte 5',
-                    'url'  => '#',
+                    'url'  => 'reporte5',
                     'icon' => 'fas fa-edit',
                 ]
             ]
@@ -394,22 +394,22 @@ return [
 
     'plugins' => [
         'Datatables' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
                     'asset' => false,
-                    'location' => '//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js',
+                    'location' => 'vendor/datatables/js/jquery.dataTables.min.js',
                 ],
                 [
                     'type' => 'js',
                     'asset' => false,
-                    'location' => '//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js',
+                    'location' => 'vendor/datatables/js/dataTables.bootstrap4.min.js',
                 ],
                 [
                     'type' => 'css',
                     'asset' => false,
-                    'location' => '//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css',
+                    'location' => 'vendor/datatables/css/dataTables.bootstrap4.min.css',
                 ],
             ],
         ],
