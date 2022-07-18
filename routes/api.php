@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/peliculas', 'App\Http\Controllers\ApiController@indexPeliculas');
+Route::get('/alquilers', 'App\Http\Controllers\ApiController@indexAlquilers');
+Route::get('/socios', 'App\Http\Controllers\ApiController@indexSocios');
+Route::get('/directors', 'App\Http\Controllers\ApiController@indexDirectors');
+Route::get('/generos', 'App\Http\Controllers\ApiController@indexGeneros');

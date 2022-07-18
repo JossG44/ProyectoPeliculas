@@ -38,14 +38,18 @@ class HomeController extends Controller
         $c_generos = Genero::all()->count();
         $c_formatos = Formato::all()->count();
 
-        //GRAFICA AREA DE X:DIRECCION - Y:CANT SOCIOS
         $cLatacunga = Socio::where('soc_direccion', 'Latacunga')->count();
         $cQuito = Socio::where('soc_direccion', 'Quito')->count();
         $cAmbato = Socio::where('soc_direccion', 'Ambato')->count();
         $cQuevedo = Socio::where('soc_direccion', 'Quevedo')->count();
         $cSalcedo = Socio::where('soc_direccion', 'Salcedo')->count();
 
-        //GRAFICA DONUT
+        $Valor1 = Pelicula::where('pel_costo', '2.50')->count();
+        $Valor2 = Pelicula::where('pel_costo', '3.00')->count();
+        $Valor3 = Pelicula::where('pel_costo', '3.25')->count();
+        $Valor4 = Pelicula::where('pel_costo', '3.50')->count();
+        $Valor5 = Pelicula::where('pel_costo', '4.00')->count();
+        $Valor6 = Pelicula::where('pel_costo', '4.50')->count();
 
 
         return view(
@@ -60,7 +64,13 @@ class HomeController extends Controller
                 'cQuito' => $cQuito,
                 'cAmbato' => $cAmbato,
                 'cQuevedo' => $cQuevedo,
-                'cSalcedo' => $cSalcedo
+                'cSalcedo' => $cSalcedo,
+                'Valor1' => $Valor1,
+                'Valor2' => $Valor2,
+                'Valor3' => $Valor3,
+                'Valor4' => $Valor4,
+                'Valor5' => $Valor5,
+                'Valor6' => $Valor6
             ]
         );
     }

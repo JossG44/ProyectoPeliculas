@@ -194,7 +194,7 @@
   </div>
 
   <div class="col-lg-6 connectedSortable">
-    <!-- STACKED BAR CHART -->
+    <!-- MULTIPLE LINES CHART -->
     <div class="card card-success">
       <div class="card-header">
         <h3 class="card-title">Formatos más solicitados</h3>
@@ -210,13 +210,13 @@
       </div>
       <div class="card-body">
         <div class="chart">
-          <canvas id="stackedBarChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+          <canvas id="multipleLinesChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
         </div>
       </div>
       <!-- /.card-body -->
     </div>
     <!-- /.card -->
-    <!--Stacked BAR CHAT -->
+    <!--MULTIPLE LINES CHAT -->
   </div>
 
 </div>
@@ -297,15 +297,15 @@
   var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
   var donutData = {
     labels: [
-      'Chrome',
-      'IE',
-      'FireFox',
-      'Safari',
-      'Opera',
-      'Navigator',
+      '$2.50',
+      '$3.00',
+      '$3.25',
+      '$3.50',
+      '$4.00',
+      '$4.50',
     ],
     datasets: [{
-      data: [700, 500, 400, 600, 300, 100],
+      data: ['', 500, 400, 600, 300, 100],
       backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
     }]
   }
@@ -325,68 +325,84 @@
   //-------------
   //- BAR CHART -
   //-------------
-  var barChartCanvas = $('#barChart').get(0).getContext('2d')
-  var barChartData = $.extend(true, {}, areaChartData)
-  var temp0 = areaChartData.datasets[0]
-  var temp1 = areaChartData.datasets[1]
-  barChartData.datasets[0] = temp1
-  barChartData.datasets[1] = temp0
+  var xValues = ["El orfanato", "	El Irlandés", "Oliver Twist", "Bastardos sin gloria", "Tiempos violentos"];
+var yValues = [30, 20, 15, 10, 5];
+var barColors = ["#00a65a", "#f39c12","#00c0ef","#3c8dbc","#d2d6de"];
 
-  var barChartOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
-    datasetFill: false
+new Chart("barChart", {
+  type: "bar",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    title: {
+      display: true,
+      text: "5 películas más alquiladas"
+    }
   }
-
-  new Chart(barChartCanvas, {
-    type: 'bar',
-    data: barChartData,
-    options: barChartOptions
-  })
+});
   // END BAR----------
 
   //-------------
   //- LINE CHART -
   //--------------
-  var lineChartCanvas = $('#lineChart').get(0).getContext('2d')
-  var lineChartOptions = $.extend(true, {}, areaChartOptions)
-  var lineChartData = $.extend(true, {}, areaChartData)
-  lineChartData.datasets[0].fill = false;
-  lineChartData.datasets[1].fill = false;
-  lineChartOptions.datasetFill = false
+  var xValues = ['Accion','Terror','Drama','Comedia','Suspenso'];
+var yValues = [7,8,8,9,9,9,10,11,14,14,15];
 
-  var lineChart = new Chart(lineChartCanvas, {
-    type: 'line',
-    data: lineChartData,
-    options: lineChartOptions
-  })
+new Chart("lineChart", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{
+      fill: false,
+      lineTension: 0,
+      backgroundColor: "rgba(0,0,255,1.0)",
+      borderColor: "rgba(0,0,255,0.1)",
+      data: yValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    scales: {
+      yAxes: [{ticks: {min: 6, max:16}}],
+    }
+  }
+});
   // END LINE CHART
 
   //---------------------
-  //- STACKED BAR CHART -
+  //- MULTIPLE LINES CHART -
   //---------------------
-  var stackedBarChartCanvas = $('#stackedBarChart').get(0).getContext('2d')
-  var stackedBarChartData = $.extend(true, {}, barChartData)
+  var xValues = [100,200,300,400,500,600,700,800,900,1000];
 
-  var stackedBarChartOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
-    scales: {
-      xAxes: [{
-        stacked: true,
-      }],
-      yAxes: [{
-        stacked: true
-      }]
-    }
+new Chart("multipleLinesChart", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{ 
+      data: [860,1140,1060,1060,1070,1110,1330,2210,7830,2478],
+      borderColor: "#f39c12",
+      fill: false
+    }, { 
+      data: [1600,1700,1700,1900,2000,2700,4000,5000,6000,7000],
+      borderColor: "#00c0ef",
+      fill: false
+    }, { 
+      data: [300,700,2000,5000,6000,4000,2000,1000,200,100],
+      borderColor: "#d2d6de",
+      fill: false
+    }]
+  },
+  options: {
+    legend: {display: false}
   }
-
-  new Chart(stackedBarChartCanvas, {
-    type: 'bar',
-    data: stackedBarChartData,
-    options: stackedBarChartOptions
-  })
-  // END STACKED BAR
+});
+  // END MULTIPLE LINES
 </script>
 
 @stop
